@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
-namespace CrocoIt\Popup\Ui\Source\Listing\Column;
+namespace CrocoIt\Popup\Ui\Component\Listing\Column;
 
+use Magento\Framework\Escaper;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Tests\NamingConvention\true\string;
 use Magento\Ui\Component\Listing\Columns\Column;
 
 class PopupActions extends Column
@@ -14,7 +14,7 @@ class PopupActions extends Column
     private const URL_PATH_DELETE = 'popup/index/delete';
 
     /**
-     * @var \Magento\Framework\UrlInterface
+     * @var UrlInterface
      */
     private UrlInterface $urlBuilder;
 
@@ -23,11 +23,17 @@ class PopupActions extends Column
      */
     private string $editUrl;
 
+    /**
+     * @var Escaper
+     */
+    private Escaper $escaper;
+
 
     /**
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
+     * @param Escaper $escaper
      * @param array $components
      * @param array $data
      * @param string $editUrl
@@ -36,14 +42,15 @@ class PopupActions extends Column
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
         UrlInterface $urlBuilder,
+        Escaper $escaper,
         array $components = [],
         array $data = [],
         string $editUrl = self::URL_PATH_EDIT,
     ) {
         $this->urlBuilder = $urlBuilder;
         $this->editUrl = $editUrl;
+        $this->escaper = $escaper;
         parent::__construct($context, $uiComponentFactory, $components, $data);
-
     }
 
     public function prepareDataSource(array $dataSource): array
@@ -56,7 +63,7 @@ class PopupActions extends Column
                         'href' => $this->urlBuilder->getUrl($this->editUrl, ['popup_id' => $item['popup_id']]),
                         'label' => __('Edit'),
                     ];
-                    $title = $this->getEscaper()->escapeHtml($item['name']);
+                    $title = $this->escaper->escapeHtml($item['name']);
                     $item[$name]['delete'] = [
                         'href' => $this->urlBuilder->getUrl(self::URL_PATH_DELETE, ['popup_id' => $item['popup_id']]),
                         'label' => __('Delete'),
