@@ -4,7 +4,7 @@
     xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
 
     <router id="admin">
-        <route id="crocoit_popup" frontName="popup">
+        <route id="crocoit_popup" frontName="crocoit_popup">
             <module name="CrocoIt_Popup" before="Magento_Backend" />
         </route>
     </router>

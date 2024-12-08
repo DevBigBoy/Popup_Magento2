@@ -1,5 +1,5 @@
 <?php
-namespace CrocoIt\Popup\Controller\Adminhtml\Index;
+namespace CrocoIt\Popup\Controller\Adminhtml\Popup;
 
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
