@@ -44,4 +44,15 @@ class PopupRepository implements PopupRepositoryInterface
     {
         $this->popupResource->save($popup);
     }
+
+    /**
+     * @param PopupInterface $popup
+     * @return void
+     * @throws \Exception
+     */
+    public function delete(PopupInterface $popup): void
+    {
+        $this->popupResource->delete($popup);
+    }
+
 }

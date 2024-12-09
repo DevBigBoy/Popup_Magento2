@@ -18,4 +18,9 @@ interface PopupRepositoryInterface
      */
     public function getById(int $popupId): PopupInterface;
 
+    /**
+     * @param PopupInterface $popup
+     * @return void
+     */
+    public function delete(PopupInterface $popup): void;
 }
