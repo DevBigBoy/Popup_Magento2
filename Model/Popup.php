@@ -1,84 +1,91 @@
 <?php
 
+declare(strict_types=1);
+
 namespace CrocoIt\Popup\Model;
 
 use CrocoIt\Popup\Api\Data\PopupInterface;
 use Magento\Framework\Model\AbstractModel;
 use CrocoIt\Popup\Model\ResourceModel\Popup as PopupResource;
+
 class Popup extends AbstractModel implements PopupInterface
 {
-    const POPUP_ID      = 'popup_id';
-    const NAME         = 'name';
-    const CONTENT       = 'content';
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT   = 'updated_at';
-    const IS_ACTIVE     = 'is_active';
-    const TIMEOUT     = 'timeout';
-
-    protected function _construct(){
+    protected function _construct()
+    {
         $this->_eventPrefix = 'crocoit_popup';
         $this->_eventObject = 'popup';
-        $this->_idFieldName = self::POPUP_ID;
+        $this->_idFieldName = PopupInterface::POPUP_ID;
 
-        $this->_init(
-            PopupResource::class
-        );
+        $this->_init(PopupResource::class);
     }
 
     public function getPopupId(): int
     {
-        return (int) $this->getData(self::POPUP_ID);
+        return (int) $this->getData(PopupInterface::POPUP_ID);
     }
-    public function setPopupId(int $popupId){
-         $this->setData(
-             self::POPUP_ID,
-             $popupId
-         );
-    }
-    public function getName():string
+
+    public function setPopupId(int $popupId): self
     {
-        return (string) $this->setData(self::NAME);
+        return $this->setData(PopupInterface::POPUP_ID, $popupId);
     }
-    public function setName(string $name){
-       $this->setData(self::NAME, $name);
-    }
-    public function getContent():string
+
+    public function getName(): string
     {
-        return (string) $this->setData(self::CONTENT);
+        return (string) $this->getData(PopupInterface::NAME);
     }
-    public function setContent(string $content){
-       $this->setData(self::CONTENT, $content);
-    }
-    public function getCreatedAt():string
+
+    public function setName(string $name): self
     {
-        return (string) $this->setData(self::CREATED_AT);
+        return $this->setData(PopupInterface::NAME, $name);
     }
-    public function setCreatedAt(string $createdAt)
+
+    public function getContent(): string
     {
-        $this->setData(self::CREATED_AT, $createdAt);
+        return (string) $this->getData(PopupInterface::CONTENT);
     }
-    public function getUpdatedAt():string
+
+    public function setContent(string $content): self
     {
-        return (string) $this->setData(self::UPDATED_AT);
+        return $this->setData(PopupInterface::CONTENT, $content);
     }
-    public function setUpdatedAt(string $updatedAt)
+
+    public function getCreatedAt(): string
     {
-       $this->setData(self::UPDATED_AT, $updatedAt);
+        return (string) $this->getData(PopupInterface::CREATED_AT);
     }
-    public function getIsActive():bool
+
+    public function setCreatedAt(string $createdAt): self
     {
-        return (bool) $this->setData(self::IS_ACTIVE);
+        return $this->setData(PopupInterface::CREATED_AT, $createdAt);
     }
-    public function setIsActive(int $status)
+
+    public function getUpdatedAt(): string
     {
-        $this->setData(self::IS_ACTIVE, $status);
+        return (string) $this->getData(PopupInterface::UPDATED_AT);
     }
-    public function getTimeout():int
+
+    public function setUpdatedAt(string $updatedAt): self
     {
-        return (int) $this->setData(self::TIMEOUT);
+        return $this->setData(PopupInterface::UPDATED_AT, $updatedAt);
     }
-    public function setTimeout(int $timeout)
+
+    public function getIsActive(): bool
     {
-        $this->setData(self::TIMEOUT, $timeout);
+        return (bool) $this->getData(PopupInterface::IS_ACTIVE);
+    }
+
+    public function setIsActive(bool $status): self
+    {
+        return $this->setData(PopupInterface::IS_ACTIVE, $status);
+    }
+
+    public function getTimeout(): int
+    {
+        return (int) $this->getData(PopupInterface::TIMEOUT);
+    }
+
+    public function setTimeout(int $timeout): self
+    {
+        return $this->setData(PopupInterface::TIMEOUT, $timeout);
     }
 }

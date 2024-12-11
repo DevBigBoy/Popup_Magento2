@@ -13,9 +13,9 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
 {
 
     /**
-     * @param $name
-     * @param $primaryFieldName
-     * @param $requestFieldName
+     * @param string $name
+     * @param string $primaryFieldName
+     * @param string $requestFieldName
      * @param Reporting $reporting
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param RequestInterface $request
@@ -24,15 +24,15 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
      * @param array $data
      */
     public function __construct(
-        $name,
-        $primaryFieldName,
-        $requestFieldName,
+        string $name,
+        string $primaryFieldName,
+        string $requestFieldName,
         Reporting $reporting,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         RequestInterface $request,
         FilterBuilder $filterBuilder,
         array $meta = [],
-        array $data = [],
+        array $data = []
     ) {
         parent::__construct(
             $name,

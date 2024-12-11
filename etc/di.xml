@@ -22,4 +22,11 @@
             <argument name="resourceModel" xsi:type="string">CrocoIt\Popup\Model\ResourceModel\Popup</argument>
         </arguments>
     </type>
+
+    <type name="CrocoIt\Popup\Model\ResourceModel\Popup\CollectionFactory">
+        <arguments>
+            <argument name="popup" xsi:type="object">CrocoIt\Popup\Model\ResourceModel\Popup</argument>
+        </arguments>
+    </type>
+
 </config>

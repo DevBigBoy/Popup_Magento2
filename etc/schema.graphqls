@@ -1,0 +1,21 @@
+
+type Query {
+    getPopups(filter: PopupFilterInput): [Popup] @resolver(class: "CrocoIt\\Popup\\Model\\Resolver\\GetPopups")
+}
+
+
+type Popup {
+    popup_id: Int!
+    name: String!
+    content: String
+    created_at: String
+    updated_at: String
+    is_active: Boolean!
+    timeout: Int!
+}
+
+input PopupFilterInput {
+    name: String
+    is_active: Boolean
+    timeout: Int
+}
