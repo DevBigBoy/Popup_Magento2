@@ -3,6 +3,8 @@ declare(strict_types=1);
 namespace CrocoIt\Popup\Api;
 
 use CrocoIt\Popup\Api\Data\PopupInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\TestFramework\Exception\NoSuchActionException;
 
 interface PopupRepositoryInterface
 {
@@ -15,6 +17,7 @@ interface PopupRepositoryInterface
     /**
      * @param int $popupId
      * @return PopupInterface
+     * @throws NoSuchEntityException
      */
     public function getById(int $popupId): PopupInterface;
 

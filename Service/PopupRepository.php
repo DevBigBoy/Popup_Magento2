@@ -7,6 +7,7 @@ use CrocoIt\Popup\Api\PopupRepositoryInterface;
 use CrocoIt\Popup\Model\PopupFactory;
 use CrocoIt\Popup\Model\ResourceModel\Popup as PopupResource;
 use Magento\Framework\Exception\AlreadyExistsException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\TestFramework\Exception\NoSuchActionException;
 
 class PopupRepository implements PopupRepositoryInterface
@@ -23,14 +24,14 @@ class PopupRepository implements PopupRepositoryInterface
     /**
      * @param int $popupId
      * @return PopupInterface
-     * @throws NoSuchActionException
+     * @throws NoSuchEntityException
      */
     public function getById(int $popupId): PopupInterface
     {
         $popup = $this->factory->create();
        $this->popupResource->load($popup, $popupId);
        if (!$popup->getId()) {
-           throw new NoSuchActionException(__('Popup with id "%1" does not exist.', $popupId));
+           throw new NoSuchEntityException(__('Popup with id "%1" does not exist.', $popupId));
        }
        return $popup;
     }
