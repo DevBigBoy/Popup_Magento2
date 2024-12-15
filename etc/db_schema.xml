@@ -24,7 +24,6 @@
         <index referenceId="CROCOIT_POPUP_NAME_CONTENT" indexType="fulltext">
             <column name="name"/>
             <column name="content"/>
-            <column name="content"/>
         </index>
     </table>
 </schema>

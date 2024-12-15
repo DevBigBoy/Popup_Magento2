@@ -6,6 +6,9 @@
     <preference for="CrocoIt\Popup\Api\PopupRepositoryInterface"
                 type="CrocoIt\Popup\Service\PopupRepository" />
 
+    <preference for="CrocoIt\Popup\Api\PopupManagementInterface"
+                type="CrocoIt\Popup\Service\PopupManagement" />
+
     <preference for="CrocoIt\Popup\Api\Data\PopupInterface"
                 type="CrocoIt\Popup\Model\Popup" />
 
